@@ -1,0 +1,29 @@
+.calc {
+    max-width: 240px;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.display {
+    text-align: right;
+    padding: 5px;
+    border: 1px solid;
+    flex-grow: 1;
+}
+
+.buttons {
+    border: 1px solid;
+    flex-grow: 4;
+    display: flex;
+}
+
+.column {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    flex-grow: 1;
+}
