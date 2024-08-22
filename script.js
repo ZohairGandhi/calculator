@@ -40,3 +40,50 @@ function operate(oprnd1, oprnd2, oprtr) {
             break;
     }
 }
+
+let buttons = document.querySelector(".buttons");
+let displayVal = "";
+let oprtrEntered = false;
+
+buttons.addEventListener("click", (event) => {
+    let btnText = event.target.textContent;
+
+    let display = document.querySelector(".display");
+
+    switch (btnText) {
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+            if (oprtrEntered) {
+                displayVal = "";
+            }
+            displayVal += btnText;
+            oprtrEntered = false;
+            break;
+
+        case "/":
+        case "*":
+        case "-":
+        case "+":
+            displayVal = btnText;
+            oprtrEntered = true;
+            break;
+
+        case "=":
+            // eval expr
+            break;
+
+        case "C":
+            displayVal = "";
+            oprtrEntered = false;
+            break;
+    }
+    display.textContent = displayVal;
+});

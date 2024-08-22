@@ -13,17 +13,13 @@ body {
 }
 
 .display {
-    padding: 0px;
+    padding: 0px 10px;
     margin: 0px;
     border: 1px solid;
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-}
-
-#disp-text {
-    padding: 0px 10px;
 }
 
 .buttons {
