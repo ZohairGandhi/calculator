@@ -18,9 +18,9 @@ function divide(num1, num2) {
     }
 }
 
-let oprnd1;
-let oprnd2;
-let oprtr;
+let oprnd1 = null;
+let oprnd2 = null;
+let oprtr = null;
 
 function operate(oprnd1, oprnd2, oprtr) {
     let result;
@@ -39,11 +39,13 @@ function operate(oprnd1, oprnd2, oprtr) {
             result = divide(oprnd1, oprnd2);
             break;
     }
+
+    return result;
 }
 
 let buttons = document.querySelector(".buttons");
 let displayVal = "";
-let oprtrEntered = false;
+let isPrevInputOprtr = false;
 
 buttons.addEventListener("click", (event) => {
     let btnText = event.target.textContent;
@@ -61,28 +63,39 @@ buttons.addEventListener("click", (event) => {
         case "7":
         case "8":
         case "9":
-            if (oprtrEntered) {
+            if (isPrevInputOprtr) {
                 displayVal = "";
             }
             displayVal += btnText;
-            oprtrEntered = false;
+            isPrevInputOprtr = false;
             break;
 
         case "/":
         case "*":
         case "-":
         case "+":
+            oprnd1 = Number(displayVal);
             displayVal = btnText;
-            oprtrEntered = true;
+            oprtr = displayVal;
+            isPrevInputOprtr = true;
             break;
 
         case "=":
-            // eval expr
+            if (oprnd1 !== null && oprtr !== null && !("/*-+".includes(displayVal))) {
+                oprnd2 = Number(displayVal);
+                oprnd1 = operate(oprnd1, oprnd2, oprtr);
+                displayVal = "" + oprnd1;
+                oprtr = null;
+                oprnd2 = null;
+            }
             break;
 
         case "C":
-            displayVal = "";
-            oprtrEntered = false;
+            displayVal = "0";
+            isPrevInputOprtr = true;
+            oprnd1 = null;
+            oprnd2 = null;
+            oprtr = null;
             break;
     }
     display.textContent = displayVal;
