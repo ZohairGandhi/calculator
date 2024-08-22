@@ -14,7 +14,7 @@ function divide(num1, num2) {
     if (num2) {
         return num1 / num2;
     } else {
-        return "ERROR";
+        return "DUMBASS";
     }
 }
 
@@ -83,10 +83,17 @@ buttons.addEventListener("click", (event) => {
         case "=":
             if (oprnd1 !== null && oprtr !== null && !("/*-+".includes(displayVal))) {
                 oprnd2 = Number(displayVal);
-                oprnd1 = operate(oprnd1, oprnd2, oprtr);
-                displayVal = "" + oprnd1;
-                oprtr = null;
+                let result = operate(oprnd1, oprnd2, oprtr);
+                if (result === "DUMBASS") {
+                    displayVal = result;
+                    oprnd1 = null;
+                } else {
+                    oprnd1 = Math.round(result * 10) / 10;
+                    displayVal = "" + oprnd1;
+                }
+                isPrevInputOprtr = true;
                 oprnd2 = null;
+                oprtr = null;
             }
             break;
 
