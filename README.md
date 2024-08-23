@@ -1,0 +1,1 @@
+This is a project to build a basic calculator to practice skills in HTML, CSS and JavaScript. This project particularly required understanding of DOM events and manipulation.
