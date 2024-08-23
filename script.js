@@ -70,7 +70,7 @@ buttons.addEventListener("click", (event) => {
             }
             break;
 
-        case "=":
+        case "eq":
             if (oprnd1 !== null && oprtr !== null && !("/*-+".includes(displayVal))) {
                 oprnd2 = Number(displayVal);
                 let result = operate(oprnd1, oprnd2, oprtr);
