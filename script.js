@@ -62,10 +62,12 @@ buttons.addEventListener("click", (event) => {
             break;
 
         case "op":
-            oprnd1 = Number(displayVal);
-            displayVal = target.textContent;
-            oprtr = displayVal;
-            isPrevInputOprtr = true;
+            if (displayVal !== "DUMBASS") {
+                oprnd1 = Number(displayVal);
+                displayVal = target.textContent;
+                oprtr = displayVal;
+                isPrevInputOprtr = true;
+            }
             break;
 
         case "=":
