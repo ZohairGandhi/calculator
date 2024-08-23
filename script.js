@@ -43,39 +43,27 @@ function operate(oprnd1, oprnd2, oprtr) {
     return result;
 }
 
-let buttons = document.querySelector(".buttons");
+const buttons = document.querySelector(".buttons");
 let displayVal = "";
 let isPrevInputOprtr = false;
 
 buttons.addEventListener("click", (event) => {
-    let btnText = event.target.textContent;
+    const target = event.target;
 
-    let display = document.querySelector(".display");
+    const display = document.querySelector(".display");
 
-    switch (btnText) {
-        case "0":
-        case "1":
-        case "2":
-        case "3":
-        case "4":
-        case "5":
-        case "6":
-        case "7":
-        case "8":
-        case "9":
+    switch (target.id) {
+        case "num":
             if (isPrevInputOprtr) {
                 displayVal = "";
             }
-            displayVal += btnText;
+            displayVal += target.textContent;
             isPrevInputOprtr = false;
             break;
 
-        case "/":
-        case "*":
-        case "-":
-        case "+":
+        case "op":
             oprnd1 = Number(displayVal);
-            displayVal = btnText;
+            displayVal = target.textContent;
             oprtr = displayVal;
             isPrevInputOprtr = true;
             break;
